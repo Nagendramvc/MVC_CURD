@@ -30,11 +30,11 @@ namespace MyNoteMVC.Controllers
         }
 
         //Employee Details
-        public ActionResult Details(int id)
-        {
-            var emp = db.Employees.Find(id);
-            return View(emp);
-        }
+        //public ActionResult Details(int id)
+        //{
+        //    var emp = db.Employees.Find(id);
+        //    return View(emp);
+        //}
 
 
         //Create Employee
