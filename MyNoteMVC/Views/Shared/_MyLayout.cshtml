@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    @*<script>
+        function display_ct6() {
+            var x = new Date()
+            var ampm = x.getHours() >= 12 ? ' PM' : ' AM';
+            hours = x.getHours() % 12;
+            hours = hours ? hours : 12;
+            var x1 = x.getMonth() + 1 + "/" + x.getDate() + "/" + x.getFullYear();
+            x1 = x1 + " - " + hours + ":" + x.getMinutes() + ":" + x.getSeconds() + ":" + ampm;
+            document.getElementById('ct6').innerHTML = x1;
+            display_c6();
+        }
+
+        function display_c6() {
+            var refresh = 1000; // Refresh rate in milli seconds
+            mytime = setTimeout('display_ct6()', refresh)
+        }
+        display_c6()
+    </script>*@
+
+
+    <style>
+        .navbar-fixed-top {
+            background-color: #363e5b;
+        }
+
+        .navbar-fixed-side-left {
+            width: 230px;
+            height: 100%;
+            position: fixed;
+            background-color: #363e5b;
+            margin-top: 2px;
+            left: 1px;
+            /*z-index: 1;*/
+            /*overflow-x: hidden;*/
+        }
+
+        .left-style ul li {
+            border-bottom: 2px solid #ffd800;
+            padding: 0 4px;
+            /*display: inline-block;*/
+        }
+
+            .left-style ul li a {
+                color: #ffd800;
+                background-color: #12790a;
+                font-weight: bold;
+            }
+
+            .left-style ul li a:hover {
+                color: green;
+                background-color: aquamarine;
+                font-weight: bold;
+            }
+
+
+        footer {
+            /*position: absolute;
+            left: auto;*/
+            bottom: 0;
+            width: 100%;
+            height: 24px;
+        }
+    </style>
+
+</head>
+<body>
+    <!--Top Menu-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <div style="float:left">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+                @*<div style="float:right;">
+                        <ul class="nav navbar-nav">
+                            <li style="color:aliceblue; font-size:18px; background-color:green;">
+                                <text id='ct6' ></text>
+                            </li>
+                        </ul>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+
+    <!--Left Menu-->
+    <div class="col-md-2 left-style">
+        <ul class="nav navbar-fixed-side navbar-fixed-side-left">
+            <li>@Html.ActionLink("CURD With EF", "List", "CURDEF")</li>
+            <li>@Html.ActionLink("CURD without EF", "List", "CURDWithoutEF")</li>
+            <li>@Html.ActionLink("CURD AJAX", "Index", "CURDAJAX")</li>
+            <li>@Html.ActionLink("Role List", "Rolelist", "Task")</li>
+            <li>@Html.ActionLink("File", "Index", "File")</li>
+            <li>@Html.ActionLink("User List", "RegistrationList", "Userinfo")</li>
+            <li>@Html.ActionLink("A", "A", "side")</li>
+            <li>@Html.ActionLink("B", "B", "side")</li>
+            <li>@Html.ActionLink("C", "C", "side")</li>
+            <li>@Html.ActionLink("AA", "AA", "side")</li>
+            <li>@Html.ActionLink("BB", "BB", "side")</li>
+            <li>@Html.ActionLink("CC", "CC", "side")</li>
+
+        </ul>
+    </div>
+
+    <div class="container body-content col-md-10">
+        @RenderBody()
+        <hr />
+        <div class="footer navbar-fixed-bottom">
+            <footer style="background-color:red; color:white">
+                <p style="text-align:center">&copy; @DateTime.Now.Year - My Application</p>
+            </footer>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<MyNoteMVC.Entity.Employee>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Employee List</h2>
+
+
+@if (TempData["Save"] != null)
+{
+    <div class="alert alert-success" id="success-alert">
+        <strong>@TempData["Save"].ToString()</strong>
+    </div>
+}
+else if (TempData["Edit"] != null)
+{
+    <div class="alert alert-warning" id="success-alert">
+        <strong>@TempData["Edit"].ToString()</strong>
+    </div>
+}
+else if (TempData["Delete"] != null)
+{
+    <div class="alert alert-danger" id="success-alert">
+        <strong>@TempData["Delete"].ToString()</strong>
+    </div>
+}
+else
+{
+
+}
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+    $("#success-alert").slideUp(500);
+    });
+</script>
+
+
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>S.No</th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.EID)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.EName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMobile)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Createdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Updatedate)
+                </th>*@
+        <th></th>
+    </tr>
+
+    @{int i = 0;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{ i++;}
+                <span>@i</span>
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.EID)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.EName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMobile)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Createdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Updatedate)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EID })
+            </td>
+        </tr>
+    }
+
+</table>
+

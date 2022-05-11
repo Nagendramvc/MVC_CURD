@@ -1,0 +1,75 @@
+﻿@model MyNoteMVC.Entity.Employee
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employee Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMobile)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Createdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Createdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Updatedate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Updatedate)
+        </dd>*@
+
+    </dl>
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MydbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="DID" />
+          </Key>
+          <Property Name="DID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Designationname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Eduction">
+          <Key>
+            <PropertyRef Name="EID" />
+          </Key>
+          <Property Name="EID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Eductionname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Createdate" Type="datetime" />
+          <Property Name="Updatedate" Type="datetime" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EID" />
+          </Key>
+          <Property Name="EID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Createdate" Type="datetime" />
+          <Property Name="Updatedate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Colors" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Qualification">
+          <Key>
+            <PropertyRef Name="QID" />
+          </Key>
+          <Property Name="QID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Qualificationname" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Mydb.dbo.Student' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Student">
+          <Property Name="SID" Type="int" />
+          <Property Name="SName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="SMobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Createdate" Type="datetime" />
+          <Property Name="Updatedate" Type="datetime" />
+        </EntityType>-->
+        <EntityType Name="StudentReg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Mydb.dbo.Userinfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Userinfo">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Userregistration">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="500" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="50" />
+          <Property Name="Eduction" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="District" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Languages" Type="nvarchar" MaxLength="50" />
+          <Property Name="Createdate" Type="datetime" />
+          <Property Name="Updatedate" Type="datetime" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rolename" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Usersubroles">
+          <Key>
+            <PropertyRef Name="SubRID" />
+          </Key>
+          <Property Name="SubRID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rolename" Type="nvarchar" MaxLength="200" />
+          <Property Name="URID" Type="int" />
+        </EntityType>
+        <Association Name="FK__Usersubrol__URID__04E4BC85">
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
+          <End Role="Usersubroles" Type="Self.Usersubroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="RID" />
+            </Principal>
+            <Dependent Role="Usersubroles">
+              <PropertyRef Name="URID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddNewStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StdId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetStudentDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Insertupdateemployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EID" Type="int" Mode="In" />
+          <Parameter Name="EName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="EMobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CreateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ename" Type="nvarchar" Mode="In" />
+          <Parameter Name="Designation" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobileno" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DeleteEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_EmployeeDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_EmployeeList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_GetdetailEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Insertupdateemployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EID" Type="int" Mode="In" />
+          <Parameter Name="EName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Emobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="EEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_listEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_UpdateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EID" Type="int" Mode="In" />
+          <Parameter Name="Ename" Type="nvarchar" Mode="In" />
+          <Parameter Name="Designation" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobileno" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="EName" Type="varchar" Mode="In" />
+          <Parameter Name="EMobile" Type="varchar" Mode="In" />
+          <Parameter Name="EEmail" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateStudentDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StdId" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="MydbModelStoreContainer">
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Eduction" EntityType="Self.Eduction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qualification" EntityType="Self.Qualification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentReg" EntityType="Self.StudentReg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Userregistration" EntityType="Self.Userregistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usersubroles" EntityType="Self.Usersubroles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Userinfo" EntityType="Self.Userinfo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Userinfo].[UserID] AS [UserID], 
+    [Userinfo].[Name] AS [Name], 
+    [Userinfo].[Email] AS [Email], 
+    [Userinfo].[Password] AS [Password], 
+    [Userinfo].[Mobile] AS [Mobile]
+    FROM [dbo].[Userinfo] AS [Userinfo]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Usersubrol__URID__04E4BC85" Association="Self.FK__Usersubrol__URID__04E4BC85">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="Usersubroles" EntitySet="Usersubroles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MydbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="DID" />
+          </Key>
+          <Property Name="DID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Designationname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Eduction">
+          <Key>
+            <PropertyRef Name="EID" />
+          </Key>
+          <Property Name="EID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Eductionname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Createdate" Type="DateTime" Precision="3" />
+          <Property Name="Updatedate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EID" />
+          </Key>
+          <Property Name="EID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Createdate" Type="DateTime" Precision="3" />
+          <Property Name="Updatedate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Colors" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Qualification">
+          <Key>
+            <PropertyRef Name="QID" />
+          </Key>
+          <Property Name="QID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Qualificationname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="StudentReg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Userregistration">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Eduction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Languages" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Createdate" Type="DateTime" Precision="3" />
+          <Property Name="Updatedate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rolename" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usersubroles" Relationship="Self.FK__Usersubrol__URID__04E4BC85" FromRole="UserRoles" ToRole="Usersubroles" />
+        </EntityType>
+        <EntityType Name="Usersubrole">
+          <Key>
+            <PropertyRef Name="SubRID" />
+          </Key>
+          <Property Name="SubRID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rolename" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="URID" Type="Int32" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK__Usersubrol__URID__04E4BC85" FromRole="Usersubroles" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="Userinfo">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Usersubrol__URID__04E4BC85">
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="0..1" />
+          <End Role="Usersubroles" Type="Self.Usersubrole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="RID" />
+            </Principal>
+            <Dependent Role="Usersubroles">
+              <PropertyRef Name="URID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MydbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Designations" EntityType="Self.Designation" />
+          <EntitySet Name="Eductions" EntityType="Self.Eduction" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Qualifications" EntityType="Self.Qualification" />
+          <EntitySet Name="StudentRegs" EntityType="Self.StudentReg" />
+          <EntitySet Name="Userregistrations" EntityType="Self.Userregistration" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="Usersubroles" EntityType="Self.Usersubrole" />
+          <EntitySet Name="Userinfoes" EntityType="Self.Userinfo" />
+          <AssociationSet Name="FK__Usersubrol__URID__04E4BC85" Association="Self.FK__Usersubrol__URID__04E4BC85">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="Usersubroles" EntitySet="Usersubroles" />
+          </AssociationSet>
+          <FunctionImport Name="AddNewStudent">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteEmployee">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteStudent">
+            <Parameter Name="StdId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllEmployees" ReturnType="Collection(MydbModel.GetAllEmployees_Result)" />
+          <FunctionImport Name="GetStudentDetails" ReturnType="Collection(MydbModel.GetStudentDetails_Result)" />
+          <FunctionImport Name="Insertupdateemployee">
+            <Parameter Name="EID" Mode="In" Type="Int32" />
+            <Parameter Name="EName" Mode="In" Type="String" />
+            <Parameter Name="EEmail" Mode="In" Type="String" />
+            <Parameter Name="EMobile" Mode="In" Type="String" />
+            <Parameter Name="Action" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CreateEmployee">
+            <Parameter Name="Ename" Mode="In" Type="String" />
+            <Parameter Name="Designation" Mode="In" Type="String" />
+            <Parameter Name="Mobileno" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DeleteEmployee">
+            <Parameter Name="EID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EmployeeDetail" ReturnType="Collection(MydbModel.SP_EmployeeDetail_Result)">
+            <Parameter Name="EID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EmployeeList" ReturnType="Collection(MydbModel.SP_EmployeeList_Result)" />
+          <FunctionImport Name="sp_GetdetailEmployee" ReturnType="Collection(MydbModel.sp_GetdetailEmployee_Result)">
+            <Parameter Name="EID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Insertupdateemployee">
+            <Parameter Name="EID" Mode="In" Type="Int32" />
+            <Parameter Name="EName" Mode="In" Type="String" />
+            <Parameter Name="Emobile" Mode="In" Type="String" />
+            <Parameter Name="EEmail" Mode="In" Type="String" />
+            <Parameter Name="Action" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_listEmployee" ReturnType="Collection(MydbModel.sp_listEmployee_Result)" />
+          <FunctionImport Name="sp_UpdateEmployee">
+            <Parameter Name="EID" Mode="In" Type="Int32" />
+            <Parameter Name="Ename" Mode="In" Type="String" />
+            <Parameter Name="Designation" Mode="In" Type="String" />
+            <Parameter Name="Mobileno" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateEmployee">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="EName" Mode="In" Type="String" />
+            <Parameter Name="EMobile" Mode="In" Type="String" />
+            <Parameter Name="EEmail" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateStudentDetails">
+            <Parameter Name="StdId" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAllEmployees_Result">
+          <Property Type="Int32" Name="EID" Nullable="false" />
+          <Property Type="String" Name="EName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EMobile" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="Createdate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Updatedate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetStudentDetails_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_EmployeeDetail_Result">
+          <Property Type="Int32" Name="EID" Nullable="false" />
+          <Property Type="String" Name="EName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EMobile" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="Createdate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Updatedate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_EmployeeList_Result">
+          <Property Type="Int32" Name="EID" Nullable="false" />
+          <Property Type="String" Name="EName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EMobile" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="Createdate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Updatedate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_GetdetailEmployee_Result">
+          <Property Type="Int32" Name="EID" Nullable="false" />
+          <Property Type="String" Name="EName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EMobile" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="Createdate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Updatedate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_listEmployee_Result">
+          <Property Type="Int32" Name="EID" Nullable="false" />
+          <Property Type="String" Name="EName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EMobile" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="Createdate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Updatedate" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MydbModelStoreContainer" CdmEntityContainer="MydbEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="MydbModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Designations">
+            <EntityTypeMapping TypeName="MydbModel.Designation">
+              <MappingFragment StoreEntitySet="Designation">
+                <ScalarProperty Name="DID" ColumnName="DID" />
+                <ScalarProperty Name="Designationname" ColumnName="Designationname" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eductions">
+            <EntityTypeMapping TypeName="MydbModel.Eduction">
+              <MappingFragment StoreEntitySet="Eduction">
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="Eductionname" ColumnName="Eductionname" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="MydbModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="EName" ColumnName="EName" />
+                <ScalarProperty Name="EEmail" ColumnName="EEmail" />
+                <ScalarProperty Name="EMobile" ColumnName="EMobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="MydbModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Colors" ColumnName="Colors" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qualifications">
+            <EntityTypeMapping TypeName="MydbModel.Qualification">
+              <MappingFragment StoreEntitySet="Qualification">
+                <ScalarProperty Name="QID" ColumnName="QID" />
+                <ScalarProperty Name="Qualificationname" ColumnName="Qualificationname" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentRegs">
+            <EntityTypeMapping TypeName="MydbModel.StudentReg">
+              <MappingFragment StoreEntitySet="StudentReg">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Userregistrations">
+            <EntityTypeMapping TypeName="MydbModel.Userregistration">
+              <MappingFragment StoreEntitySet="Userregistration">
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Eduction" ColumnName="Eduction" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Languages" ColumnName="Languages" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="MydbModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="RID" ColumnName="RID" />
+                <ScalarProperty Name="Rolename" ColumnName="Rolename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usersubroles">
+            <EntityTypeMapping TypeName="MydbModel.Usersubrole">
+              <MappingFragment StoreEntitySet="Usersubroles">
+                <ScalarProperty Name="SubRID" ColumnName="SubRID" />
+                <ScalarProperty Name="Rolename" ColumnName="Rolename" />
+                <ScalarProperty Name="URID" ColumnName="URID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Userinfoes">
+            <EntityTypeMapping TypeName="MydbModel.Userinfo">
+              <MappingFragment StoreEntitySet="Userinfo">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddNewStudent" FunctionName="MydbModel.Store.AddNewStudent" />
+          <FunctionImportMapping FunctionImportName="DeleteEmployee" FunctionName="MydbModel.Store.DeleteEmployee" />
+          <FunctionImportMapping FunctionImportName="DeleteStudent" FunctionName="MydbModel.Store.DeleteStudent" />
+          <FunctionImportMapping FunctionImportName="GetAllEmployees" FunctionName="MydbModel.Store.GetAllEmployees">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MydbModel.GetAllEmployees_Result">
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="EName" ColumnName="EName" />
+                <ScalarProperty Name="EEmail" ColumnName="EEmail" />
+                <ScalarProperty Name="EMobile" ColumnName="EMobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetStudentDetails" FunctionName="MydbModel.Store.GetStudentDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MydbModel.GetStudentDetails_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Insertupdateemployee" FunctionName="MydbModel.Store.Insertupdateemployee" />
+          <FunctionImportMapping FunctionImportName="sp_CreateEmployee" FunctionName="MydbModel.Store.sp_CreateEmployee" />
+          <FunctionImportMapping FunctionImportName="SP_DeleteEmployee" FunctionName="MydbModel.Store.SP_DeleteEmployee" />
+          <FunctionImportMapping FunctionImportName="SP_EmployeeDetail" FunctionName="MydbModel.Store.SP_EmployeeDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MydbModel.SP_EmployeeDetail_Result">
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="EName" ColumnName="EName" />
+                <ScalarProperty Name="EEmail" ColumnName="EEmail" />
+                <ScalarProperty Name="EMobile" ColumnName="EMobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_EmployeeList" FunctionName="MydbModel.Store.SP_EmployeeList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MydbModel.SP_EmployeeList_Result">
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="EName" ColumnName="EName" />
+                <ScalarProperty Name="EEmail" ColumnName="EEmail" />
+                <ScalarProperty Name="EMobile" ColumnName="EMobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetdetailEmployee" FunctionName="MydbModel.Store.sp_GetdetailEmployee">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MydbModel.sp_GetdetailEmployee_Result">
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="EName" ColumnName="EName" />
+                <ScalarProperty Name="EEmail" ColumnName="EEmail" />
+                <ScalarProperty Name="EMobile" ColumnName="EMobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Insertupdateemployee" FunctionName="MydbModel.Store.SP_Insertupdateemployee" />
+          <FunctionImportMapping FunctionImportName="sp_listEmployee" FunctionName="MydbModel.Store.sp_listEmployee">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MydbModel.sp_listEmployee_Result">
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="EName" ColumnName="EName" />
+                <ScalarProperty Name="EEmail" ColumnName="EEmail" />
+                <ScalarProperty Name="EMobile" ColumnName="EMobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_UpdateEmployee" FunctionName="MydbModel.Store.sp_UpdateEmployee" />
+          <FunctionImportMapping FunctionImportName="UpdateEmployee" FunctionName="MydbModel.Store.UpdateEmployee" />
+          <FunctionImportMapping FunctionImportName="UpdateStudentDetails" FunctionName="MydbModel.Store.UpdateStudentDetails" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

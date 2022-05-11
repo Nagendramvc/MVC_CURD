@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>AJAX</h2>
+
+
+
+<button id="emplist">Employee Lists</button>
+
+<div>
+    <div class="container" id="tbleshow">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+            </tr>
+            <tr>
+                <td id="ide"></td>
+                <td id="nm"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Save-->
+<script>
+    $(Document).ready(function () {
+        $("emplist").click(function () {
+            $("#tbleshow").hide();
+
+
+
+            $.ajax({
+                type: "POST",
+                url: "/CURDAJAX/Create/",
+                data: {},
+                success: function (result) {
+                    alert('ok');
+                },
+                error: function (result) {
+                    alert('error');
+                }
+            });
+
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

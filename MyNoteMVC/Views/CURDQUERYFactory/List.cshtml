@@ -1,0 +1,53 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>List</h2>
+
+<form method="post" name="Display">
+
+    @Html.ActionLink("Add New Record", "Insert")
+    <br />
+    @{
+        if (Model.Rows.Count > 0)
+        {
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>
+                            EID
+                        </td>
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Age
+                        </td>
+                        <td>Gender</td>
+                    </tr>
+                </thead>
+                @foreach (DataRow dr in Model.Rows)
+                {
+                    <tr>
+                        <td>@dr["EID"].ToString() </td>
+                        <td>@dr["Name"].ToString() </td>
+                        <td>@dr["Age"].ToString() </td>
+                        <td>@dr["Gender"].ToString() </td>
+                        <td>@Html.ActionLink("Edit ", "Edit", new { StudentID = dr["EID"].ToString() })</td>
+                        <td>@Html.ActionLink("| Delete", "Delete", new { StudentID = dr["EID"].ToString() })</td>
+                    </tr>
+                }
+            </table>
+            <br />
+        }
+        else
+        {
+            <span> No records found!!</span>
+        }
+    }
+</form>  

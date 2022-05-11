@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "RemoveUploadFile";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>RemoveUploadFile</h2>
+
+
+
+
+
+
+
+
+<script>
+    $('#uloadTable td img.link').live('click', function () {
+        var filename = $(this).parent().parent().parent().attr('id');
+        $(this).parent().parent().parent().remove();
+        $.ajax({
+            type: "post",
+            url: "/FileUpload/RemoveUploadFile?fileName=" + filename,
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                alert('File Deleted');
+                if (data == 0) {
+                    $('#uloadTable').remove();
+                }
+            }
+        });
+    });
+
+</script>
+
+
+
+
+
+
+
+
+
