@@ -30,11 +30,11 @@ namespace MyNoteMVC.Controllers
         }
 
         //Employee Details
-        //public ActionResult Details(int id)
-        //{
-        //    var emp = db.Employees.Find(id);
-        //    return View(emp);
-        //}
+        public ActionResult Details(int id)
+        {
+            var emp = db.Employees.Find(id);
+            return View(emp);
+        }
 
 
         //Create Employee
@@ -58,7 +58,7 @@ namespace MyNoteMVC.Controllers
                 db.Employees.Add(em);
                 db.SaveChanges();
 
-                //TempData["Save"] = "Saved Successfully";
+                TempData["Save"] = "Saved Successfully";
                 return RedirectToAction("List");
             }
             else
@@ -105,7 +105,7 @@ namespace MyNoteMVC.Controllers
                 db.Entry(em).State = EntityState.Modified;
                 db.SaveChanges();
 
-                //TempData["Edit"] = "Update Successfully";
+                TempData["Edit"] = "Update Successfully";
                 return RedirectToAction("List");
             }
 
@@ -122,7 +122,7 @@ namespace MyNoteMVC.Controllers
                 db.Employees.Remove(emp);
                 db.SaveChanges();
 
-                //TempData["Delete"] = "Delete Successfully";
+                TempData["Delete"] = "Delete Successfully";
                 return RedirectToAction("List");
             }
             return View(emp);
